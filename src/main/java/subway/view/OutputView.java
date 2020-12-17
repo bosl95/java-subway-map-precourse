@@ -3,6 +3,7 @@ package subway.view;
 public class OutputView {
     public static StringBuilder stringBuilder = new StringBuilder();
     protected static String MENU_SYMBOL = "## ";
+    protected static String INFO_SYMBOL = "## ";
     protected static String NEW_LINE = "\n";
 
     static void print() {

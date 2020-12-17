@@ -1,41 +1,42 @@
 package subway.controller;
 
-import subway.domain.DummyData;
+import subway.domain.menu.MainMenu;
+import subway.view.InputView;
 import subway.view.MainOutputView;
 
 public class MainController {
-    private static boolean end;
+    MainOutputView mainOutputView;
+    InputView inputView;
+    MainMenu mainMenu;
 
     public MainController() {
-        DummyData.load();
-        end = true;
-    }
-
-    public void run() {
-        while (isRunning()) {
-            MainOutputView.printMainMenu();
-            inputMainMenu();
-        }
-    }
-
-    public static void printAll() {
-
-    }
-
-    private void inputMainMenu() {
-        mainOutputView.selectMainMenu();
-        inputView.selectMainMenu();
-    }
-
-    private boolean isRunning() {
-        return end;
-    }
-
-    public static void printAll() {
-
+        mainOutputView = new MainOutputView();
+        inputView = new InputView();
     }
 
     public static void quite() {
-        end = false;
+        MainOutputView.quiteProgram();
+    }
+
+    public void run() {
+        do {
+            MainOutputView.printMainMenu();
+            mainMenu = MainMenu.fineMenu(inputMainMenu());
+            mainMenu.run();
+        } while (mainMenu.isRunning());
+    }
+
+    public static void printAll() {
+
+    }
+
+    private String inputMainMenu() {
+        try {
+            mainOutputView.selectMainMenu();
+            String menu = inputView.selectMainMenu();
+            return menu;
+        } catch (NullPointerException e) {
+            return inputMainMenu();
+        }
     }
 }

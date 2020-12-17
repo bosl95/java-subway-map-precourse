@@ -8,6 +8,7 @@ public class MainOutputView extends OutputView {
     private static String MENU_FOUR = "4. 지하철 노선도 출력\n";
     private static String MENU_QUITE = "Q. 종료\n";
     private static String SELECT_MENU = "원하는 기능을 선택하세요.\n";
+    private static String QUITE_MESSAGE = "프로그램이 종료됩니다.\n";
 
     public static void printMainMenu() {
         stringBuilder.append(NEW_LINE);
@@ -18,6 +19,12 @@ public class MainOutputView extends OutputView {
         stringBuilder.append(MENU_THREE);
         stringBuilder.append(MENU_FOUR);
         stringBuilder.append(MENU_QUITE);
+        print();
+    }
+
+    public static void quiteProgram() {
+        stringBuilder.append(INFO_SYMBOL);
+        stringBuilder.append(QUITE_MESSAGE);
         print();
     }
 
