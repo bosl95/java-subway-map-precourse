@@ -10,6 +10,7 @@ public class MainOutputView extends OutputView {
     private static String SELECT_MENU = "원하는 기능을 선택하세요.\n";
 
     public static void printMainMenu() {
+        stringBuilder.append(NEW_LINE);
         stringBuilder.append(MENU_SYMBOL);
         stringBuilder.append(MAIN_VIEW);
         stringBuilder.append(MENU_ONE);
@@ -21,6 +22,7 @@ public class MainOutputView extends OutputView {
     }
 
     public void selectMainMenu() {
+        stringBuilder.append(NEW_LINE);
         stringBuilder.append(MENU_SYMBOL);
         stringBuilder.append(SELECT_MENU);
         print();
