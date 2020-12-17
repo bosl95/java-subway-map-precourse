@@ -14,7 +14,17 @@ public class MainController {
     public void run() {
         while (isRunning()) {
             MainOutputView.printMainMenu();
+            inputMainMenu();
         }
+    }
+
+    public static void printAll() {
+
+    }
+
+    private void inputMainMenu() {
+        mainOutputView.selectMainMenu();
+        inputView.selectMainMenu();
     }
 
     private boolean isRunning() {
