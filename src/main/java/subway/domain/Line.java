@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,5 +17,7 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public List<String> informStations() {
+        return Collections.unmodifiableList(stations);
+    }
 }

@@ -27,7 +27,7 @@ public class MainController {
     }
 
     public static void printAll() {
-
+        MainOutputView.printSubwayMap(LineController.informSubwayMap());
     }
 
     private String inputMainMenu() {
