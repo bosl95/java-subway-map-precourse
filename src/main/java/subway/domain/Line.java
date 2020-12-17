@@ -7,9 +7,9 @@ public class Line {
     private String name;
     private List<String> stations = new LinkedList<>();
 
-    public Line(String name, List<String> stations) {
+    public Line(String name, List<String> dummyStations) {
         this.name = name;
-        stations.addAll(stations);
+        stations.addAll(dummyStations);
     }
 
     public String getName() {
