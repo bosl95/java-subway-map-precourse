@@ -1,18 +1,19 @@
 package subway.controller;
 
 import subway.domain.DummyData;
+import subway.view.MainOutputView;
 
 public class MainController {
     private static boolean end;
 
     public MainController() {
         DummyData.load();
-        end = false;
+        end = true;
     }
 
     public void run() {
         while (isRunning()) {
-
+            MainOutputView.printMainMenu();
         }
     }
 
@@ -25,6 +26,6 @@ public class MainController {
     }
 
     public static void quite() {
-        end = true;
+        end = false;
     }
 }
