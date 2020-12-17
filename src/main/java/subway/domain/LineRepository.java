@@ -1,12 +1,17 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class LineRepository {
-    private static final List<Line> lines = new ArrayList<>();
+    private static final List<Line> lines = new LinkedList<>();
+
+    public static Line valueOf(String name, List<String> stations) {
+        return new Line(name, stations);
+    }
+
+    public static void addAll(List<Line> dummyLines) {
+        lines.addAll(dummyLines);
+    }
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
