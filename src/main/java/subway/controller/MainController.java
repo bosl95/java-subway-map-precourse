@@ -26,7 +26,7 @@ public class MainController implements Controller {
     private void selectMenu() {
         try {
             mainMenu = MainMenu.fineMenu(inputMainMenu());
-            menuStart();
+            mainMenu.start();
         } catch (InvalidMenuInputException e) {
             mainMenu = MainMenu.setRunningState();
         }
@@ -34,17 +34,12 @@ public class MainController implements Controller {
 
     private String inputMainMenu() {
         try {
-            mainOutputView.selectMainMenu();
+            mainOutputView.selectMenu();
             String menu = inputView.selectMenu();
             return menu;
         } catch (NullPointerException e) {
             return inputMainMenu();
         }
-    }
-
-    private void menuStart() {
-        Controller controller = mainMenu.getController();
-        controller.run();
     }
 
     public static void printAll() {

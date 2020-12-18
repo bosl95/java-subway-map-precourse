@@ -32,7 +32,7 @@ public enum MainMenu {
     }
 
     public boolean isRunning() {
-        return !Objects.equals(MainMenu.QUITE, this.button);
+        return !Objects.equals(MainMenu.QUITE, this);
     }
 
     public static MainMenu setRunningState() {
@@ -48,5 +48,11 @@ public enum MainMenu {
 
     public Controller getController() {
         return this.controller;
+    }
+
+    public void start() {
+        if (isRunning()) {
+            this.controller.run();
+        }
     }
 }
