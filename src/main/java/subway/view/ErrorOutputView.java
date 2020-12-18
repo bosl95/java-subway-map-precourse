@@ -11,17 +11,16 @@ public class ErrorOutputView extends OutputView {
     private static String EQUAL_FIRST_LAST_STATIONS = "상행 종점역과 하행 종점역이 일치합니다.\n";
     private static String REGISTERED_LINE = "이미 등록된 노선 이름입니다.\n";
     private static String NOT_EXIST_LINE = "등록되지 않은 노선입니다.\n";
+    private static String ORDER_NOT_NUMBER = "순서는 숫자만 입력 가능합니다.\n";
+    private static String STATION_IN_SELECT_LINE = "해당 노선에 역이 존재합니다.\n";
+    private static String INVALID_ORDER_LENGTH = "순서의 범위를 벗어났습니다.\n";
     
     public static void invalidMenuInput() {
-        errorSymbol();
-        stringBuilder.append(INVALID_MENU_INPUT);
-        print();
+        printError(INVALID_MENU_INPUT);
     }
 
     public static void invalidStationName() {
-        errorSymbol();
-        stringBuilder.append(INVALID_STATION_INPUT);
-        print();
+        printError(INVALID_STATION_INPUT);
     }
 
     private static void errorSymbol() {
@@ -29,44 +28,48 @@ public class ErrorOutputView extends OutputView {
     }
 
     public static void alreadyRegisterStation() {
-        errorSymbol();
-        stringBuilder.append(REGISTERED_STATION);
-        print();
+        printError(REGISTERED_STATION);
     }
 
     public static void notExistStation() {
-        errorSymbol();
-        stringBuilder.append(NOT_EXIST_STATION);
-        print();
+        printError(NOT_EXIST_STATION);
     }
 
     public static void stationInAnyLine() {
-        errorSymbol();
-        stringBuilder.append(STATION_IN_LINE);
-        print();
+        printError(STATION_IN_LINE);
     }
 
     public static void invalidLineName() {
-        errorSymbol();
-        stringBuilder.append(INVALID_LINE_INPUT);
-        print();
+        printError(INVALID_LINE_INPUT);
     }
 
     public static void equalFirstLastStations() {
-        errorSymbol();
-        stringBuilder.append(EQUAL_FIRST_LAST_STATIONS);
-        print();
+        printError(EQUAL_FIRST_LAST_STATIONS);
     }
 
     public static void alreadyRegisterLine() {
-        errorSymbol();
-        stringBuilder.append(REGISTERED_LINE);
-        print();
+        printError(REGISTERED_LINE);
     }
 
     public static void notExistLine() {
+        printError(NOT_EXIST_LINE);
+    }
+
+    public static void orderNotNumber() {
+        printError(ORDER_NOT_NUMBER);
+    }
+
+    public static void alreadyExistStationOfLine() {
+        printError(STATION_IN_SELECT_LINE);
+    }
+
+    public static void invalidOrderLength() {
+        printError(INVALID_ORDER_LENGTH);
+    }
+
+    private static void printError(String error) {
         errorSymbol();
-        stringBuilder.append(NOT_EXIST_LINE);
+        stringBuilder.append(error);
         print();
     }
 }
