@@ -3,6 +3,7 @@ package subway.domain;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Line {
     private String name;
@@ -36,5 +37,9 @@ public class Line {
     public void add(String order, String station) {
         int index = Integer.parseInt(order) - 1;
         stations.add(index, station);
+    }
+
+    public void removeStation(String name) {
+        stations.removeIf(station -> Objects.equals(station, name));
     }
 }

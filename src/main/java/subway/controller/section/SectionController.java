@@ -37,6 +37,6 @@ public class SectionController implements Controller {
     }
 
     public static void delete() {
-        System.out.println("delete");
+        sectionFunction.deleteSection(sectionOutputView);
     }
 }

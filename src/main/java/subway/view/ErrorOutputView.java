@@ -14,7 +14,15 @@ public class ErrorOutputView extends OutputView {
     private static String ORDER_NOT_NUMBER = "순서는 숫자만 입력 가능합니다.\n";
     private static String STATION_IN_SELECT_LINE = "해당 노선에 역이 존재합니다.\n";
     private static String INVALID_ORDER_LENGTH = "순서의 범위를 벗어났습니다.\n";
-    
+    private static String STATION_NOT_IN_SELECT_LINE = "해당 노선에 역이 존재하지 않습니다.\n";
+    private static String INVALID_LINE_LENGTH = "노선의 길이가 2 이하입니다.\n";
+
+    private static void printError(String error) {
+        errorSymbol();
+        stringBuilder.append(error);
+        print();
+    }
+
     public static void invalidMenuInput() {
         printError(INVALID_MENU_INPUT);
     }
@@ -67,9 +75,11 @@ public class ErrorOutputView extends OutputView {
         printError(INVALID_ORDER_LENGTH);
     }
 
-    private static void printError(String error) {
-        errorSymbol();
-        stringBuilder.append(error);
-        print();
+    public static void notExistStationOfLine() {
+        printError(STATION_NOT_IN_SELECT_LINE);
+    }
+
+    public static void invalidLineLength() {
+            printError(INVALID_LINE_LENGTH);
     }
 }

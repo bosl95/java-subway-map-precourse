@@ -55,4 +55,10 @@ public class LineRepository {
                 .filter(line -> Objects.equals(line.getName(), lineName))
                 .findAny();
     }
+
+    public static void deleteStationOfLine(String line, String station) {
+        findLine(line)
+                .get()
+                .removeStation(station);
+    }
 }
