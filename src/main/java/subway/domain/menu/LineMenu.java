@@ -38,6 +38,8 @@ public enum LineMenu {
     }
 
     public void run() {
-        runnable.run();
+        if (!Objects.equals(this, BACK)) {
+            runnable.run();
+        }
     }
 }
