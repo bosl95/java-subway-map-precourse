@@ -17,8 +17,16 @@ public class OutputView {
     }
 
     public void selectMenu() {
-        stringBuilder.append(MENU_SYMBOL);
+        menuSymbol();
         stringBuilder.append(SELECT_MENU);
         print();
+    }
+
+    protected void menuSymbol() {
+        stringBuilder.append(MENU_SYMBOL);
+    }
+
+    protected void infoSymbol() {
+        stringBuilder.append(INFO_SYMBOL);
     }
 }

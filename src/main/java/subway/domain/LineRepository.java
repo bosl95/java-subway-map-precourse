@@ -9,10 +9,6 @@ public class LineRepository {
         return new Line(name, stations);
     }
 
-    public static void addAll(List<Line> dummyLines) {
-        lines.addAll(dummyLines);
-    }
-
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
@@ -23,5 +19,10 @@ public class LineRepository {
 
     public static boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    }
+
+    public static boolean hasStationInAnyLine(String name) {
+        return lines.stream()
+                .anyMatch(line -> line.contains(name));
     }
 }

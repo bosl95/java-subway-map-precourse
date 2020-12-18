@@ -1,6 +1,8 @@
 package subway.domain;
 
 import subway.utils.exception.AlreadyRegisterStationException;
+import subway.utils.exception.NotExistStationException;
+import subway.utils.exception.StationInAnyLineException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,8 +24,13 @@ public class StationRepository {
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    public static void deleteStation(String name) {
+        if (LineRepository.hasStationInAnyLine(name)) {
+            throw new StationInAnyLineException();
+        }
+        if (!stations.removeIf(station -> Objects.equals(station.getName(), name))) {
+            throw new NotExistStationException();
+        }
     }
 
     private static boolean alreadyRegister(String name) {
