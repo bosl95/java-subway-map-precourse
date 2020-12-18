@@ -25,7 +25,7 @@ public class LineFunction {
         }
     }
 
-    private String inputRegisterLine() {
+    public String inputRegisterLine() {
         String line = InputView.inputLine();
         if (LineRepository.hasLine(line)) {
             throw new AlreadyRegisterStationException();
@@ -56,7 +56,6 @@ public class LineFunction {
     }
 
     public void printLines(LineOutputView lineOutputView) {
-        // tationOutputView.printStations(StationRepository.stations());
         lineOutputView.printLines(LineRepository.lines());
     }
 }
