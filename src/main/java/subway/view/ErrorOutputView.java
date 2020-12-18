@@ -10,7 +10,8 @@ public class ErrorOutputView extends OutputView {
     private static String STATION_IN_LINE = "역이 노선에 등록되어있습니다.\n";
     private static String EQUAL_FIRST_LAST_STATIONS = "상행 종점역과 하행 종점역이 일치합니다.\n";
     private static String REGISTERED_LINE = "이미 등록된 노선 이름입니다.\n";
-
+    private static String NOT_EXIST_LINE = "등록되지 않은 노선입니다.\n";
+    
     public static void invalidMenuInput() {
         errorSymbol();
         stringBuilder.append(INVALID_MENU_INPUT);
@@ -60,6 +61,12 @@ public class ErrorOutputView extends OutputView {
     public static void alreadyRegisterLine() {
         errorSymbol();
         stringBuilder.append(REGISTERED_LINE);
+        print();
+    }
+
+    public static void notExistLine() {
+        errorSymbol();
+        stringBuilder.append(NOT_EXIST_LINE);
         print();
     }
 }

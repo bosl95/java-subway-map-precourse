@@ -10,6 +10,8 @@ public class LineOutputView extends OutputView {
     private static String SUCCESS_REGISTER_LINE = "지하철 노선이 등록되었습니다.\n";
     private static String INPUT_FIRST_STATION = "등록할 노선의 상행 종점역의 이름을 입력하세요.\n";
     private static String INPUT_LAST_STATION = "등록할 노선의 하행 종점역의 이름을 입력하세요.\n";
+    private static String INPUT_DELETE_LINE = "삭제할 노선 이름을 입력하세요.\n";
+    private static String SUCCESS_DELETE_LINE = "지하철 노선이 삭제되었습니다.\n";
 
     public void printAll(List<Line> lines) {
 
@@ -40,6 +42,18 @@ public class LineOutputView extends OutputView {
     public void inputLastStations() {
         menuSymbol();
         stringBuilder.append(INPUT_LAST_STATION);
+        print();
+    }
+
+    public void inputDeleteLine() {
+        menuSymbol();
+        stringBuilder.append(INPUT_DELETE_LINE);
+        print();
+    }
+
+    public void successDelete() {
+        infoSymbol();
+        stringBuilder.append(SUCCESS_DELETE_LINE);
         print();
     }
 }

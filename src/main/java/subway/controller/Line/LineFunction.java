@@ -4,6 +4,7 @@ import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.utils.exception.AlreadyRegisterStationException;
 import subway.utils.exception.EqualFirstLastStationsException;
+import subway.utils.exception.NotExistLineException;
 import subway.view.InputView;
 import subway.view.LineOutputView;
 
@@ -15,7 +16,7 @@ public class LineFunction {
     public void registerLine(LineOutputView lineOutputView) {
         try {
             lineOutputView.inputRegisterLine();
-            String line = inputLine();
+            String line = inputRegisterLine();
             List<String> stations = inputFistLastStations(lineOutputView);
             LineRepository.addLine(Line.from(line, stations));
             lineOutputView.successRegister();
@@ -24,7 +25,7 @@ public class LineFunction {
         }
     }
 
-    private String inputLine() {
+    private String inputRegisterLine() {
         String line = InputView.inputLine();
         if (LineRepository.hasLine(line)) {
             throw new AlreadyRegisterStationException();
@@ -41,5 +42,16 @@ public class LineFunction {
             throw new EqualFirstLastStationsException();
         }
         return Arrays.asList(firstStation, lastStation);
+    }
+
+    public void deleteLine(LineOutputView lineOutputView) {
+        try {
+            lineOutputView.inputDeleteLine();
+            String line = InputView.inputLine();
+            LineRepository.deleteLineByName(line);
+            lineOutputView.successDelete();
+        } catch (NullPointerException | NotExistLineException e) {
+            return;
+        }
     }
 }

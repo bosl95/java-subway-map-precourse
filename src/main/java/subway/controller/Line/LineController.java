@@ -46,7 +46,7 @@ public class LineController implements Controller {
     }
 
     public static void delete() {
-        System.out.println("노선 삭제");
+        lineFunction.deleteLine(lineOutputView);
     }
 
     public static void print() {

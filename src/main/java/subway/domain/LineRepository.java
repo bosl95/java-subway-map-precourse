@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.utils.exception.NotExistLineException;
+
 import java.util.*;
 
 public class LineRepository {
@@ -17,8 +19,11 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static void deleteLineByName(String name) {
+        if (!LineRepository.hasLine(name)) {
+            throw new NotExistLineException();
+        }
+        lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
     public static boolean hasStationInAnyLine(String name) {
