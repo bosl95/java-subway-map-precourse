@@ -37,7 +37,7 @@ public class StationController implements Controller {
     }
 
     public static void delete() {
-        stationFunction.deleteStation();
+        stationFunction.deleteStation(stationOutputView);
     }
 
     public static void print() {

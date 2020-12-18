@@ -17,8 +17,8 @@ public class StationFunction {
         }
     }
 
-    public void deleteStation() {
-        System.out.println("역 삭제하기\n");
+    public void deleteStation(StationOutputView stationOutputView) {
+            stationOutputView.inputDeleteStation();
     }
 
     public void printStations(StationOutputView stationOutputView) {
