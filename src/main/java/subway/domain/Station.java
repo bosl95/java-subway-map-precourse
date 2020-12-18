@@ -7,9 +7,14 @@ public class Station {
         this.name = name;
     }
 
+    public static Station from(String name) {
+        return new Station(name);
+    }
+
     public String getName() {
         return name;
     }
+
 
     // 추가 기능 구현
 }

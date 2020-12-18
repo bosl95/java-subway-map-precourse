@@ -1,24 +1,25 @@
-package subway.controller;
+package subway.controller.Station;
 
+import subway.controller.Controller;
 import subway.domain.menu.StationMenu;
 import subway.view.InputView;
 import subway.view.StationOutputView;
 
 public class StationController implements Controller {
-    StationOutputView stationOutputView;
-    StationMenu stationMenu;
+    private static StationFunction stationFunction;
+    protected static StationOutputView stationOutputView;
+    private StationMenu stationMenu;
 
     public StationController() {
         stationOutputView = new StationOutputView();
+        stationFunction = new StationFunction();
     }
 
     @Override
     public void run() {
-        do {
-            stationOutputView.printStationMenu(StationMenu.list());
-            stationMenu = StationMenu.fineMenu(inputStationMenu());
-            stationMenu.run();
-        } while (stationMenu.isRunning());
+        stationOutputView.printStationMenu(StationMenu.list());
+        stationMenu = StationMenu.fineMenu(inputStationMenu());
+        stationMenu.run();
     }
 
     private String inputStationMenu() {
@@ -32,14 +33,14 @@ public class StationController implements Controller {
     }
 
     public static void register() {
-        System.out.println("역 등록하기\n");
+        stationFunction.registerStation(stationOutputView);
     }
 
     public static void delete() {
-        System.out.println("역 삭제하기\n");
+        stationFunction.deleteStation();
     }
 
     public static void print() {
-        System.out.println("역 조회하기\n");
+        stationFunction.printStations(stationOutputView);
     }
 }

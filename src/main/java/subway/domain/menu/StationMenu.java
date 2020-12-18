@@ -1,6 +1,6 @@
 package subway.domain.menu;
 
-import subway.controller.*;
+import subway.controller.Station.StationController;
 import subway.utils.exception.InvalidMenuInputException;
 
 import java.util.Arrays;
@@ -37,16 +37,12 @@ public enum StationMenu {
                 .collect(Collectors.toList());
     }
 
-    public boolean isRunning() {
-        return !Objects.equals(StationMenu.BACK, this);
-    }
-
     public static StationMenu setRunningState() {
         return StationMenu.REGISTER;    // just for running state
     }
 
     public void run() {
-        if (isRunning()) {
+        if (!Objects.equals(StationMenu.BACK, this)) {
             runnable.run();
         }
     }

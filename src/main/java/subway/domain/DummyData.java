@@ -1,8 +1,6 @@
 package subway.domain;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DummyData {
     public static void load() {
@@ -11,17 +9,18 @@ public class DummyData {
     }
 
     private static void station_load() {
-        List<String> stationNames = Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
-        StationRepository.addAll(stationNames.stream()
-                .map(name -> StationRepository.from(name))
-                .collect(Collectors.toList()));
+        StationRepository.addStation(Station.from("교대역"));
+        StationRepository.addStation(Station.from("강남역"));
+        StationRepository.addStation(Station.from("역삼역"));
+        StationRepository.addStation(Station.from("남부터미널역"));
+        StationRepository.addStation(Station.from("양재역"));
+        StationRepository.addStation(Station.from("양재시민의숲역"));
+        StationRepository.addStation(Station.from("매봉역"));
     }
 
     private static void line_load() {
-        LineRepository.addAll(
-                Arrays.asList(LineRepository.valueOf("2호선", Arrays.asList("교대역", "강남역", "역삼역")),
-                        LineRepository.valueOf("3호선", Arrays.asList("교대역", "남부터미널역", "양재역", "매봉역")),
-                        LineRepository.valueOf("신분당선", Arrays.asList("강남역", "양재역", "양재시민의숲역")))
-        );
+        LineRepository.addLine(Line.from("2호선", Arrays.asList("교대역", "강남역", "역삼역")));
+        LineRepository.addLine(Line.from("3호선", Arrays.asList("교대역", "남부터미널역", "양재역", "매봉역")));
+        LineRepository.addLine(Line.from("신분당선", Arrays.asList("강남역", "양재역", "양재시민의숲역")));
     }
 }

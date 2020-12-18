@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.utils.exception.AlreadyRegisterStationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,10 +14,6 @@ public class StationRepository {
         return new Station(name);
     }
 
-    public static void addAll(List<Station> stations) {
-        stations.addAll(stations);
-    }
-
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
@@ -26,5 +24,17 @@ public class StationRepository {
 
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    private static boolean alreadyRegister(String name) {
+        return stations.stream()
+                .anyMatch(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static void registerStation(String station) {
+        if (alreadyRegister(station)) {
+            throw new AlreadyRegisterStationException();
+        }
+        addStation(from(station));
     }
 }
