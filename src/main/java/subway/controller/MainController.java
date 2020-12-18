@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.controller.Line.LineController;
 import subway.domain.menu.MainMenu;
 import subway.utils.exception.InvalidMenuInputException;
 import subway.view.InputView;

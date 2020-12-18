@@ -13,11 +13,19 @@ public class Line {
         stations.addAll(dummyStations);
     }
 
+    public static Line from(String name, List<String> stations) {
+        return new Line(name, stations);
+    }
+
     public String getName() {
         return name;
     }
 
     public List<String> informStations() {
         return Collections.unmodifiableList(stations);
+    }
+
+    public boolean contains(String name) {
+        return stations.contains(name);
     }
 }
