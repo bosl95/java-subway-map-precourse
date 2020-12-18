@@ -7,12 +7,10 @@ import subway.view.MainOutputView;
 
 public class MainController implements Controller {
     MainOutputView mainOutputView;
-    InputView inputView;
     MainMenu mainMenu;
 
     public MainController() {
         mainOutputView = new MainOutputView();
-        inputView = new InputView();
     }
 
     @Override
@@ -35,7 +33,7 @@ public class MainController implements Controller {
     private String inputMainMenu() {
         try {
             mainOutputView.selectMenu();
-            String menu = inputView.selectMenu();
+            String menu = InputView.selectMenu();
             return menu;
         } catch (NullPointerException e) {
             return inputMainMenu();

@@ -6,10 +6,10 @@ import subway.utils.exception.InvalidMenuInputException;
 import java.util.Scanner;
 
 public class InputView {
-    Scanner scanner = new Scanner(System.in);
-    InputValidator inputValidator = new InputValidator();
+    private static Scanner scanner = new Scanner(System.in);
+    private static InputValidator inputValidator = new InputValidator();
 
-    public String selectMenu() {
+    public static String selectMenu() {
         try {
             String menu = scanner.nextLine();
             inputValidator.invalidMenu(menu);

@@ -31,19 +31,19 @@ public enum MainMenu {
                 .collect(Collectors.toList());
     }
 
+    public static MainMenu fineMenu(String name) {
+        return Arrays.stream(MainMenu.values())
+                .filter(menu -> Objects.equals(menu.button, name))
+                .findAny()
+                .orElseThrow(() -> new InvalidMenuInputException());
+    }
+
     public boolean isRunning() {
         return !Objects.equals(MainMenu.QUITE, this);
     }
 
     public static MainMenu setRunningState() {
         return MainMenu.STATION;    // just for running state
-    }
-
-    public static MainMenu fineMenu(String name) {
-        return Arrays.stream(MainMenu.values())
-                .filter(menu -> Objects.equals(menu.button, name))
-                .findAny()
-                .orElseThrow(() -> new InvalidMenuInputException());
     }
 
     public Controller getController() {
