@@ -50,6 +50,6 @@ public class LineController implements Controller {
     }
 
     public static void print() {
-        System.out.println("노선 조회");
+        lineFunction.printLines(lineOutputView);
     }
 }

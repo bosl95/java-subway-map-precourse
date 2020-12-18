@@ -54,4 +54,9 @@ public class LineFunction {
             return;
         }
     }
+
+    public void printLines(LineOutputView lineOutputView) {
+        // tationOutputView.printStations(StationRepository.stations());
+        lineOutputView.printLines(LineRepository.lines());
+    }
 }
