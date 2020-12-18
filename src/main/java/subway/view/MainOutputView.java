@@ -10,10 +10,7 @@ public class MainOutputView extends OutputView {
     private static String SUBWAY_MAP = "지하철 노선도";
 
     public static void printMainMenu(List<String> menuList) {
-        stringBuilder.append(MENU_SYMBOL);
-        stringBuilder.append(MAIN_VIEW);
-        menuList.forEach(menu -> stringBuilder.append(menu));
-        print();
+        printMenu(MAIN_VIEW, menuList);
     }
 
     public static void printSubwayMap(List<Line> informSubwayMap) {

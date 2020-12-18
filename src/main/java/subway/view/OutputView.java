@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
     public static StringBuilder stringBuilder = new StringBuilder();
     protected static String MENU_SYMBOL = "\n## ";
@@ -22,11 +24,18 @@ public class OutputView {
         print();
     }
 
-    protected void menuSymbol() {
+    protected static void menuSymbol() {
         stringBuilder.append(MENU_SYMBOL);
     }
 
     protected void infoSymbol() {
         stringBuilder.append(INFO_SYMBOL);
+    }
+
+    protected static void printMenu(String VIEW_NAME, List<String> menuList) {
+        menuSymbol();
+        stringBuilder.append(VIEW_NAME);
+        menuList.forEach(menu -> stringBuilder.append(menu));
+        print();
     }
 }

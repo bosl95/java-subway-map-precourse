@@ -12,10 +12,7 @@ public class StationOutputView extends OutputView {
     private static String INPUT_DELETE_STATION = "삭제할 역 이름을 입력하세요.\n";
 
     public void printStationMenu(List<String> menuList) {
-        stringBuilder.append(MENU_SYMBOL);
-        stringBuilder.append(STATION_VIEW);
-        menuList.forEach(menu -> stringBuilder.append(menu));
-        print();
+        printMenu(STATION_VIEW, menuList);
     }
 
     public void inputRegisterStation() {
