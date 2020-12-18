@@ -2,6 +2,7 @@ package subway.controller.Station;
 
 import subway.domain.StationRepository;
 import subway.utils.exception.AlreadyRegisterStationException;
+import subway.utils.exception.InvalidStationNameException;
 import subway.utils.exception.NotExistStationException;
 import subway.utils.exception.StationInAnyLineException;
 import subway.view.InputView;
@@ -14,7 +15,7 @@ public class StationFunction {
             String station = InputView.inputStation();
             StationRepository.registerStation(station);
             stationOutputView.successRegister();
-        } catch (NullPointerException | AlreadyRegisterStationException e) {
+        } catch (InvalidStationNameException | AlreadyRegisterStationException e) {
             return;
         }
     }

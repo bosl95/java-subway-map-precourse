@@ -23,13 +23,9 @@ public class InputView {
     }
 
     public static String inputStation() {
-        try {
-            String station = scanner.nextLine();
-            inputValidator.invalidStationName(station);
-            return station;
-        } catch (InvalidStationNameException e) {
-            throw new NullPointerException();
-        }
+        String station = scanner.nextLine();
+        inputValidator.invalidStationName(station);
+        return station;
     }
 
     public static String inputLine() {
