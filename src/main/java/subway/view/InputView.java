@@ -29,13 +29,9 @@ public class InputView {
     }
 
     public static String inputLine() {
-        try {
-            String line = scanner.nextLine();
-            inputValidator.invalidLineName(line);
-            return line;
-        } catch (InvalidLineNameException e) {
-            throw new NullPointerException();
-        }
+        String line = scanner.nextLine();
+        inputValidator.invalidLineName(line);
+        return line;
     }
 
     public static String inputOrder() {
