@@ -10,6 +10,7 @@ public class LineController implements Controller {
     private static final LineRepository lineRepository = new LineRepository();
     private static final LineOutputView lineOutputView = new LineOutputView();
 
+
     @Override
     public void run() {
         System.out.println("line controller");

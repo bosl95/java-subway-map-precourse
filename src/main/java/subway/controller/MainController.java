@@ -24,7 +24,7 @@ public class MainController implements Controller {
     }
 
     private void menuStart() {
-        Controller controller = mainMenu.run();
+        Controller controller = mainMenu.getController();
         controller.run();
     }
 

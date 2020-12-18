@@ -36,7 +36,7 @@ public enum MainMenu {
                 .get();
     }
 
-    public Controller run() {
+    public Controller getController() {
         return this.controller;
     }
 }
