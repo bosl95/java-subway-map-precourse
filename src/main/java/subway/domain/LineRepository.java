@@ -7,10 +7,6 @@ import java.util.*;
 public class LineRepository {
     private static final List<Line> lines = new LinkedList<>();
 
-    public static Line valueOf(String name, List<String> stations) {
-        return new Line(name, stations);
-    }
-
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
@@ -34,5 +30,29 @@ public class LineRepository {
     public static boolean hasLine(String name) {
         return lines.stream()
                 .anyMatch(line -> Objects.equals(line.getName(), name));
+    }
+
+    public static boolean hasStationOfLine(String stationName, String lineName) {
+        return findLine(lineName)
+                .get()
+                .contains(stationName);
+    }
+
+    public static int lineLength(String name) {
+        return findLine(name)
+                .get()
+                .getLength();
+    }
+
+    public static void addLine(String lineName, String station, String order) {
+        findLine(lineName)
+                .get()
+                .add(order, station);
+    }
+
+    private static Optional<Line> findLine(String lineName) {
+        return lines.stream()
+                .filter(line -> Objects.equals(line.getName(), lineName))
+                .findAny();
     }
 }

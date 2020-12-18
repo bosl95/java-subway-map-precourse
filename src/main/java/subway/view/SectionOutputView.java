@@ -11,9 +11,36 @@ public class SectionOutputView extends OutputView {
     private static String INPUT_DELETE_LINE_OF_SECTION = "삭제할 구간의 노선을 입력하세요.\n";
     private static String INPUT_DELETE_STATION_OF_SECTION = "삭제할 구간의 역을 입력하세요.\n";
     private static String SUCCESS_DELETE_SECTION = "구간이 삭제되었습니다.\n";
-    private static String LINE_LIST = "노선 목록";
 
     public void printSectionMenu(List<String> menuList) {
         printMenu(SECTION_VIEW, menuList);
+    }
+
+    public void inputRegisterLineOfSection() {
+        menuSymbol();
+        stringBuilder.append(INPUT_REGISTER_LINE);
+        print();
+    }
+
+    public void inputRegisterStationOfSection() {
+        menuSymbol();
+        stringBuilder.append(INPUT_REGISTER_STATION);
+        print();
+    }
+
+    public void inputRegisterOrderOfSection() {
+        menuSymbol();
+        stringBuilder.append(INPUT_REGISTER_ORDER);
+        print();
+    }
+
+    public void successRegisterSection() {
+        printInfo(SUCCESS_REGISTER_SECTION);
+    }
+
+    private void printInfo(String message) {
+        infoSymbol();
+        stringBuilder.append(message);
+        print();
     }
 }

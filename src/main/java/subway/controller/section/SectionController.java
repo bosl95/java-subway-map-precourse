@@ -6,8 +6,8 @@ import subway.view.InputView;
 import subway.view.SectionOutputView;
 
 public class SectionController implements Controller {
-    SectionOutputView sectionOutputView;
-    SectionFunction sectionFunction;
+    static SectionOutputView sectionOutputView;
+    static SectionFunction sectionFunction;
     SectionMenu sectionMenu;
 
     public SectionController() {
@@ -33,7 +33,7 @@ public class SectionController implements Controller {
     }
 
     public static void register() {
-        System.out.println("register");
+        sectionFunction.registerSection(sectionOutputView);
     }
 
     public static void delete() {

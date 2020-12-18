@@ -28,4 +28,13 @@ public class Line {
     public boolean contains(String name) {
         return stations.contains(name);
     }
+
+    public int getLength() {
+        return stations.size();
+    }
+
+    public void add(String order, String station) {
+        int index = Integer.parseInt(order) - 1;
+        stations.add(index, station);
+    }
 }

@@ -4,6 +4,7 @@ import subway.utils.InputValidator;
 import subway.utils.exception.InvalidLineNameException;
 import subway.utils.exception.InvalidMenuInputException;
 import subway.utils.exception.InvalidStationNameException;
+import subway.utils.exception.OrderNotNumberException;
 
 import java.util.Scanner;
 
@@ -37,6 +38,16 @@ public class InputView {
             inputValidator.invalidLineName(line);
             return line;
         } catch (InvalidLineNameException e) {
+            throw new NullPointerException();
+        }
+    }
+
+    public static String inputOrder() {
+        try {
+            String order = scanner.nextLine();
+            inputValidator.invalidOrder(order);
+            return order;
+        } catch (OrderNotNumberException e) {
             throw new NullPointerException();
         }
     }

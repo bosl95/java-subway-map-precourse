@@ -33,7 +33,7 @@ public class StationRepository {
         }
     }
 
-    private static boolean alreadyRegister(String name) {
+    public static boolean alreadyRegister(String name) {
         return stations.stream()
                 .anyMatch(station -> Objects.equals(station.getName(), name));
     }

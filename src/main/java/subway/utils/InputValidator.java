@@ -3,13 +3,15 @@ package subway.utils;
 import subway.utils.exception.InvalidLineNameException;
 import subway.utils.exception.InvalidMenuInputException;
 import subway.utils.exception.InvalidStationNameException;
+import subway.utils.exception.OrderNotNumberException;
 
 import java.util.regex.Pattern;
 
 public class InputValidator {
     private static String MENU_PATTERN = "^[0-9]|Q|B$";
-    private static String STATION_NAME_PATTERN = "^[가-힣]+역";
-    private static String LINE_NAME_PATTERN = "^[0-9가-힣]+선";
+    private static String STATION_NAME_PATTERN = "^[가-힣]+역$";
+    private static String LINE_NAME_PATTERN = "^[0-9가-힣]+선$";
+    private static String ORDER_NUMBER_PATERN = "^[0-9]+$";
 
     public void invalidMenu(String menu) {
         if (!Pattern.matches(MENU_PATTERN, menu)) {
@@ -26,6 +28,12 @@ public class InputValidator {
     public void invalidLineName(String line) {
         if (!Pattern.matches(LINE_NAME_PATTERN, line)) {
             throw new InvalidLineNameException();
+        }
+    }
+
+    public void invalidOrder(String order) {
+        if (!Pattern.matches(ORDER_NUMBER_PATERN, order)) {
+            throw new OrderNotNumberException();
         }
     }
 }
