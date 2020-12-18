@@ -14,10 +14,6 @@ public class LineOutputView extends OutputView {
     private static String SUCCESS_DELETE_LINE = "지하철 노선이 삭제되었습니다.\n";
     private static String LINE_LIST = "노선 목록";
 
-    public void printAll(List<Line> lines) {
-
-    }
-
     public void printLineMenu(List<String> menuList) {
         printMenu(LINE_VIEW, menuList);
     }
