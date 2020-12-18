@@ -3,6 +3,7 @@ package subway.domain.menu;
 import subway.controller.*;
 import subway.controller.Line.LineController;
 import subway.controller.Station.StationController;
+import subway.controller.section.SectionController;
 import subway.utils.exception.InvalidMenuInputException;
 
 import java.util.Arrays;
