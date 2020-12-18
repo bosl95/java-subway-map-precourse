@@ -12,7 +12,7 @@ import java.util.List;
 public class LineController implements Controller {
     private static final LineRepository lineRepository = new LineRepository();
     private static LineOutputView lineOutputView;
-    private LineFunction lineFunction;
+    private static LineFunction lineFunction;
     private LineMenu lineMenu;
 
     public LineController() {
@@ -42,7 +42,7 @@ public class LineController implements Controller {
     }
 
     public static void register() {
-        System.out.println("노선 등록");
+        lineFunction.registerLine(lineOutputView);
     }
 
     public static void delete() {

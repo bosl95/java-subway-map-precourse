@@ -25,4 +25,9 @@ public class LineRepository {
         return lines.stream()
                 .anyMatch(line -> line.contains(name));
     }
+
+    public static boolean hasLine(String name) {
+        return lines.stream()
+                .anyMatch(line -> Objects.equals(line.getName(), name));
+    }
 }

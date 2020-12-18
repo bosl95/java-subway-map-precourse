@@ -36,4 +36,8 @@ public enum LineMenu {
                 .findAny()
                 .orElseThrow(() -> new InvalidMenuInputException());
     }
+
+    public void run() {
+        runnable.run();
+    }
 }

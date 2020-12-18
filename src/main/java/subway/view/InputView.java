@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.utils.InputValidator;
+import subway.utils.exception.InvalidLineNameException;
 import subway.utils.exception.InvalidMenuInputException;
 import subway.utils.exception.InvalidStationNameException;
 
@@ -26,6 +27,16 @@ public class InputView {
             inputValidator.invalidStationName(station);
             return station;
         } catch (InvalidStationNameException e) {
+            throw new NullPointerException();
+        }
+    }
+
+    public static String inputLine() {
+        try {
+            String line = scanner.nextLine();
+            inputValidator.invalidLineName(line);
+            return line;
+        } catch (InvalidLineNameException e) {
             throw new NullPointerException();
         }
     }
