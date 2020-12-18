@@ -16,14 +16,10 @@ public class MainOutputView extends OutputView {
     private static String DIVIDING_LINE = "---";
     private static String SUBWAY_MAP = "지하철 노선도";
 
-    public static void printMainMenu() {
+    public static void printMainMenu(List<String> menuList) {
         stringBuilder.append(MENU_SYMBOL);
         stringBuilder.append(MAIN_VIEW);
-        stringBuilder.append(MENU_ONE);
-        stringBuilder.append(MENU_TWO);
-        stringBuilder.append(MENU_THREE);
-        stringBuilder.append(MENU_FOUR);
-        stringBuilder.append(MENU_QUITE);
+        menuList.forEach(menu -> stringBuilder.append(menu));
         print();
     }
 

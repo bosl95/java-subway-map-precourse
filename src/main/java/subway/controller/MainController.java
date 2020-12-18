@@ -17,15 +17,10 @@ public class MainController implements Controller {
     @Override
     public void run() {
         do {
-            MainOutputView.printMainMenu();
+            MainOutputView.printMainMenu(MainMenu.list());
             mainMenu = MainMenu.fineMenu(inputMainMenu());
             menuStart();
         } while (mainMenu.isRunning());
-    }
-
-    private void menuStart() {
-        Controller controller = mainMenu.getController();
-        controller.run();
     }
 
     public static void quite() {
@@ -44,5 +39,10 @@ public class MainController implements Controller {
         } catch (NullPointerException e) {
             return inputMainMenu();
         }
+    }
+
+    private void menuStart() {
+        Controller controller = mainMenu.getController();
+        controller.run();
     }
 }
