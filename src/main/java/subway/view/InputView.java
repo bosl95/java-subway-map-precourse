@@ -9,10 +9,10 @@ public class InputView {
     Scanner scanner = new Scanner(System.in);
     InputValidator inputValidator = new InputValidator();
 
-    public String selectMainMenu() {
+    public String selectMenu() {
         try {
             String menu = scanner.nextLine();
-            inputValidator.invalidMainMenu(menu);
+            inputValidator.invalidMenu(menu);
             return menu;
         } catch (InvalidMenuInputException e) {
             throw new NullPointerException();

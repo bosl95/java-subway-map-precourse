@@ -1,6 +1,7 @@
 package subway.domain.menu;
 
 import subway.controller.*;
+import subway.utils.exception.InvalidMenuInputException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,7 @@ public enum MainMenu {
     LINE("2", "2. 노선 관리\n", new LineController()),
     SECTION("3", "3. 구간 관리\n", new SectionController()),
     PRINT_ALL("4", "4. 지하철 노선도 출력\n", MainController::printAll),
-    QUITE("Q", "Q. 종료\n", MainController::quite);
+    QUITE("Q", "Q. 종료\n", null);
 
     private String button;
     private String menu;
@@ -31,18 +32,18 @@ public enum MainMenu {
     }
 
     public boolean isRunning() {
-        try {
-            return !Objects.equals(MainMenu.QUITE.button, this.button);
-        } catch (NullPointerException e) {
-            return true;
-        }
+        return !Objects.equals(MainMenu.QUITE, this.button);
+    }
+
+    public static MainMenu setRunningState() {
+        return MainMenu.STATION;    // just for running state
     }
 
     public static MainMenu fineMenu(String name) {
         return Arrays.stream(MainMenu.values())
                 .filter(menu -> Objects.equals(menu.button, name))
                 .findAny()
-                .get();
+                .orElseThrow(() -> new InvalidMenuInputException());
     }
 
     public Controller getController() {

@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.domain.menu.MainMenu;
+import subway.utils.exception.InvalidMenuInputException;
 import subway.view.InputView;
 import subway.view.MainOutputView;
 
@@ -18,23 +19,23 @@ public class MainController implements Controller {
     public void run() {
         do {
             MainOutputView.printMainMenu(MainMenu.list());
-            mainMenu = MainMenu.fineMenu(inputMainMenu());
-            menuStart();
+            selectMenu();
         } while (mainMenu.isRunning());
     }
 
-    public static void quite() {
-        MainOutputView.quiteProgram();
-    }
-
-    public static void printAll() {
-        MainOutputView.printSubwayMap(LineController.informSubwayMap());
+    private void selectMenu() {
+        try {
+            mainMenu = MainMenu.fineMenu(inputMainMenu());
+            menuStart();
+        } catch (InvalidMenuInputException e) {
+            mainMenu = MainMenu.setRunningState();
+        }
     }
 
     private String inputMainMenu() {
         try {
             mainOutputView.selectMainMenu();
-            String menu = inputView.selectMainMenu();
+            String menu = inputView.selectMenu();
             return menu;
         } catch (NullPointerException e) {
             return inputMainMenu();
@@ -44,5 +45,9 @@ public class MainController implements Controller {
     private void menuStart() {
         Controller controller = mainMenu.getController();
         controller.run();
+    }
+
+    public static void printAll() {
+        MainOutputView.printSubwayMap(LineController.informSubwayMap());
     }
 }
