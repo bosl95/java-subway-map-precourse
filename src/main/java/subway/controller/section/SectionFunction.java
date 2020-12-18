@@ -19,7 +19,9 @@ public class SectionFunction {
             String order = inputRegisterOrderOfSection(line);
             LineRepository.addLine(line, station, order);
             sectionOutputView.successRegisterSection();
-        } catch (NullPointerException | NotExistLineException | NotExistStationException | AlreadyExistStationOfLineException e) {
+        } catch (InvalidLineNameException | InvalidStationNameException | NotExistLineException     // 구간 메뉴의 노선 이름 입력 예외 발생
+                | NotExistStationException | AlreadyExistStationOfLineException                     // 구간 메뉴의 역 이름 입력 예외 발생
+                | OrderNotNumberException | InvalidOrderLengthException e) {                        // 구간 메뉴의 순서 입력 예외 발생
             return;
         }
     }
@@ -45,13 +47,9 @@ public class SectionFunction {
     }
 
     private String inputRegisterOrderOfSection(String line) {
-        try {
-            String order = InputView.inputOrder();
-            invalidOrderLength(order, line);
-            return order;
-        } catch (NullPointerException | InvalidOrderLengthException e) {
-            throw new NullPointerException();
-        }
+        String order = InputView.inputOrder();
+        invalidOrderLength(order, line);
+        return order;
     }
 
     private void invalidOrderLength(String order, String line) {
@@ -65,13 +63,14 @@ public class SectionFunction {
     public void deleteSection(SectionOutputView sectionOutputView) {
         try {
             sectionOutputView.inputDeleteLineOfSection();
-            String line = inputDeleteLineOfSection();
+            String line = inputLineOfSection();
             isValidLineLength(line);
             sectionOutputView.inputDeleteStationOfSection();
             String station = inputDeleteStationOfSection(line);
             LineRepository.deleteStationOfLine(line, station);
             sectionOutputView.successDeleteSection();
-        } catch (NullPointerException | InvalidLineLengthException | NotExistStationException | NotExistStationOfLineException e) {
+        } catch (InvalidLineNameException | NotExistLineException | InvalidLineLengthException |                // 삭제할 구간의 노선 입력 예외 발생
+                InvalidStationNameException | NotExistStationException | NotExistStationOfLineException e) {    // 삭제할 구간의 역 이름 입력 예외 발생
             return;
         }
     }
@@ -92,14 +91,5 @@ public class SectionFunction {
             throw new NotExistStationOfLineException();
         }
         return station;
-    }
-
-    private String inputDeleteLineOfSection() {
-        try {
-            String line = inputLineOfSection();
-            return line;
-        } catch (InvalidLineNameException | NotExistLineException e) {
-            throw new NullPointerException();
-        }
     }
 }

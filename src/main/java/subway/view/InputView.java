@@ -35,12 +35,8 @@ public class InputView {
     }
 
     public static String inputOrder() {
-        try {
-            String order = scanner.nextLine();
-            inputValidator.invalidOrder(order);
-            return order;
-        } catch (OrderNotNumberException e) {
-            throw new NullPointerException();
-        }
+        String order = scanner.nextLine();
+        inputValidator.invalidOrder(order);
+        return order;
     }
 }
