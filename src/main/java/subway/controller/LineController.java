@@ -6,12 +6,13 @@ import subway.view.LineOutputView;
 
 import java.util.List;
 
-public class LineController {
+public class LineController implements Controller {
     private static final LineRepository lineRepository = new LineRepository();
     private static final LineOutputView lineOutputView = new LineOutputView();
 
-    public static void run() {
-
+    @Override
+    public void run() {
+        System.out.println("line controller");
     }
 
     public static List<Line> informSubwayMap() {

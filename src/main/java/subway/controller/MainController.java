@@ -4,7 +4,7 @@ import subway.domain.menu.MainMenu;
 import subway.view.InputView;
 import subway.view.MainOutputView;
 
-public class MainController {
+public class MainController implements Controller {
     MainOutputView mainOutputView;
     InputView inputView;
     MainMenu mainMenu;
@@ -14,16 +14,22 @@ public class MainController {
         inputView = new InputView();
     }
 
-    public static void quite() {
-        MainOutputView.quiteProgram();
-    }
-
+    @Override
     public void run() {
         do {
             MainOutputView.printMainMenu();
             mainMenu = MainMenu.fineMenu(inputMainMenu());
-            mainMenu.run();
+            menuStart();
         } while (mainMenu.isRunning());
+    }
+
+    private void menuStart() {
+        Controller controller = mainMenu.run();
+        controller.run();
+    }
+
+    public static void quite() {
+        MainOutputView.quiteProgram();
     }
 
     public static void printAll() {

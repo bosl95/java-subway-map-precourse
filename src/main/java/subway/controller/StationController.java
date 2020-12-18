@@ -1,7 +1,8 @@
 package subway.controller;
 
-public class StationController {
-    public static void run() {
+public class StationController implements Controller {
+    @Override
+    public void run() {
         System.out.println("station controller");
     }
 }

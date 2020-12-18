@@ -1,26 +1,24 @@
 package subway.domain.menu;
 
-import subway.controller.LineController;
-import subway.controller.MainController;
-import subway.controller.SectionController;
-import subway.controller.StationController;
+import subway.controller.*;
+
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public enum MainMenu {
-    STATION("1", StationController::run),
-    LINE("2", LineController::run),
-    SECTION("3", SectionController::run),
+    STATION("1", new StationController()),
+    LINE("2", new LineController()),
+    SECTION("3", new SectionController()),
     PRINT_ALL("4", MainController::printAll),
     QUITE("Q", MainController::quite);
 
     private String button;
-    private Runnable function;
+    private Controller controller;
 
-    MainMenu(String inputButton, Runnable runnable) {
+    MainMenu(String inputButton, Controller controller) {
         button = inputButton;
-        function = runnable;
+        this.controller = controller;
     }
 
     public boolean isRunning() {
@@ -38,7 +36,7 @@ public enum MainMenu {
                 .get();
     }
 
-    public void run() {
-        function.run();
+    public Controller run() {
+        return this.controller;
     }
 }
